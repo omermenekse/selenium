@@ -11,10 +11,16 @@ public class C01_driver_gets {
 
         driver.get("https://www.amazon.com");
 
-        Thread.sleep(5000);
-
-        driver.close();
-
+// belli süre bekelyip sayfayı kapatma
+        //Thread.sleep(5000);
+// browser kapatma
+        //driver.close();
+        // sayfa titlenı getirir.
+        //System.out.println(driver.getTitle());
+        //sayfa url sinin getirir
+        //System.out.println(driver.getCurrentUrl());
+        //sayfanın open source kaynak kodlarını getirir
+        //System.out.println(driver.getPageSource());
 
 
         // firefox veya opera ile çalışacaksak onların driverları indireceğiz
@@ -36,6 +42,8 @@ public class C01_driver_gets {
 
         2- 12. satırda boş bir chromeDriver() construtor ını kullanarak bir obje oluşturduk
         bu objeyi kullanmasak bilr bu satırdan dolayı boş bir browser açılır
+        3-driver.get(url) driver yzdığımız url'ye goturur
+        url yazarken https:// yazmazsak method çalışmaz
 
 
 */
