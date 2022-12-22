@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class C02_ByClassName {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // amazon'a gidip nutella icin arama yapin
         // ilk sayfada cikan urunlerin icerisinde
         // en yuksek fiyati bulun
@@ -36,9 +36,8 @@ public class C02_ByClassName {
 
 
         for (WebElement each: fiyatlarListesi
-             ) {
-            System.out.print(each.getText()+" ");
-        }
+             )
+            System.out.print(each.getText() + " ");
 
 
 
@@ -66,7 +65,8 @@ public class C02_ByClassName {
 
         Thread.sleep(3000);
         driver.close();
-
+// class attribute ın da space varsa yapılan locate aramalarının çoğu başarısız olur.
+        // tagname ile unique değere ulaşmak çok zordur
 
 
     }
