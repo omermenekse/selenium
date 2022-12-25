@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+import java.util.List;
 
 public class C02_ZeroTest {
     public static void main(String[] args) throws InterruptedException {
@@ -16,26 +17,44 @@ public class C02_ZeroTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().window().maximize();
 
-        //1- https://www.amazon.com/ sayfasina gidelim
-        driver.get("https://www.amazon.com/");
-        //2- arama kutusunu locate edelim
-        WebElement searchBox= driver.findElement(By.id("twotabsearchtextbox"));
-        //3- “Samsung headphones” ile arama yapalim
-        searchBox.sendKeys(("Samsung headphones")+ Keys.ENTER);
-        //4- Bulunan sonuc sayisini yazdiralim
 
-        WebElement sonucYaziElementi= driver.findElement(By.xpath("(//div[@class='a-section a-spacing-small a-spacing-top-small'])[1]"));
-        System.out.println( sonucYaziElementi.getText());
-        //5- Ilk urunu tiklayalim
+        //1. http://zero.webappsecurity.com sayfasina gidin
+        driver.get("http://zero.webappsecurity.com");
+        //2. Signin buttonuna tiklayin
+        driver.findElement(By.id("signin_button")).click();
 
 
 
 
-        //6- Sayfadaki tum basliklari yazdiralim
 
 
 
 
+        driver.findElement(By.id("signin_button")).click();
+        //3. Login alanina  “username” yazdirin
+        driver.findElement(By.id("user_login")).sendKeys("username");
+        //4. Password alanine “password” yazdirin
+        driver.findElement(By.id("user_password")).sendKeys("password");
+        //5. Sign in buttonuna tiklayin
+        driver.findElement(By.xpath("//input[@name='submit']")).click();
+        //6. navigate back yapip,online banking menusunden Pay Bills sayfasina gidin
+        driver.navigate().back();
+        driver.findElement(By.id("onlineBankingMenu")).click();
+        driver.findElement(By.id("pay_bills_link")).click();
+        //7. amount kismina yatirmak istediginiz herhangi bir miktari yazin
+        driver.findElement(By.id("sp_amount")).sendKeys("200");
+        //8. tarih kismina “2020-09-10” yazdirin
+        driver.findElement(By.id("sp_date")).sendKeys("2020-09-10");
+        //9. Pay buttonuna tiklayin
+        driver.findElement(By.id("pay_saved_payees")).click();
+        //10. “The payment was successfully submitted.” mesajinin ciktigini test edin
+        WebElement succesfullyElementi= driver.findElement(By.id("alert_content"));
+        if (succesfullyElementi.isDisplayed()){
+            System.out.println("Test PASSED");
+        }else{
+            System.out.println("Test FAILED");
+        }
+        driver.close();
 
         Thread.sleep(5000);
         driver.close();
